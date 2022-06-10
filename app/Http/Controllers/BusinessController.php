@@ -13,7 +13,8 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        return view('admin.business');
+        //return view('admin.business');
+        return "Testing index function";
     }
 
     /**
@@ -34,7 +35,7 @@ class BusinessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store Method Working";
     }
 
     /**
@@ -45,7 +46,7 @@ class BusinessController extends Controller
      */
     public function show($id)
     {
-        //
+        return $id;
     }
 
     /**

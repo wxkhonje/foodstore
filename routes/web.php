@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\FoodStoreController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ResturantController;
@@ -59,4 +60,6 @@ Route::get('/emails', function (){
 
 Route::post('resturant',[FoodStoreController::class, 'store'])->name('resturanttest');
 
-Route::resource('/adminbiz','BusinessController');
+Route::resource('/adminbiz',BusinessController::class);
+
+Route::post('/newbusiness',[BusinessController::class, 'store']);
