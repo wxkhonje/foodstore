@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\business;
+use App\Models\location;
 use Illuminate\Http\Request;
 
 class BusinessController extends Controller
@@ -13,8 +15,9 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        //return view('admin.business');
-        return "Testing index function";
+        $locations = location::all();
+        $business = business::paginate(6);
+        return view('admin.business')->with('business',$business)->with('location',$locations);
     }
 
     /**
@@ -35,7 +38,22 @@ class BusinessController extends Controller
      */
     public function store(Request $request)
     {
-        return "Store Method Working";
+        business::create([
+            'name'=>$request->get('name'),
+            'category'=>$request->get('category'),
+            'location'=>$request->get('location'),
+            'PhysicalAddress'=>$request->get('PhysicalAddress'),
+            'longitude'=>$request->get('longitude'),
+            'latitude'=>$request->get('latitude'),
+            'contactperson'=>$request->get('contactperson'),
+            'email'=>$request->get('email'),
+            'cellnumber'=>$request->get('cellnumber'),
+            'facebookhandle'=>$request->get('facebookhandle'),
+            'instagramhandle'=>$request->get('instagramhandle')
+        ]);
+
+        $business = business::paginate(6);
+        return view('admin.business')->with('business',$business);
     }
 
     /**

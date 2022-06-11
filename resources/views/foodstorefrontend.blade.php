@@ -2,54 +2,52 @@
 @section('content')
     <!-- Resturant section-->
     <section id="resturant">
-        <div class="container px-5">
-                <div class="input-group mb-3">
+        <div class="container px-12">
                     {!! Form::open(['method'=>'POST', 'route'=>'resturanttest']) !!}
-
-                    <div class="form-group">
-                        {!! Form::label('title', 'Category', ['class'=>'control']); !!}
-                        {!! Form::select('category', [
-                                                        'Foodtruck' => 'Foodtruck',
-                                                        'TakeAway' => 'TakeAway',
-                                                        'Resturant'=>'Resturant',
-                                                        'Cafes'=>'Cafes',
-                                                        'Bakeries'=>'Bakeries',
-                                                        'SweetShops'=>'SweetShops',
-                                                        'BeverageShops'=>'BeverageShops',
-                                                        'Bars'=>'Bars',
-                                                        'IceCreamShops'=>'IceCreamShops',
-                                                        'StreetFoods'=>'StreetFoods',
-                                                        'DessertShops'=>'DessertShops'
-                                                     ], 'Resturant'); !!}
+                    <div class="row">
+                        <div class="form-group col-sm">
+                            {!! Form::label('title', 'Category', ['class'=>'control']); !!}
+                            {!! Form::select('category', [
+                                                            'Foodtruck' => 'Foodtruck',
+                                                            'TakeAway' => 'TakeAway',
+                                                            'Resturant'=>'Resturant',
+                                                            'Cafes'=>'Cafes',
+                                                            'Bakeries'=>'Bakeries',
+                                                            'SweetShops'=>'SweetShops',
+                                                            'BeverageShops'=>'BeverageShops',
+                                                            'Bars'=>'Bars',
+                                                            'IceCreamShops'=>'IceCreamShops',
+                                                            'StreetFoods'=>'StreetFoods',
+                                                            'DessertShops'=>'DessertShops'
+                                                         ], 'Resturant'); !!}
+                        </div>
+                        <div class="form-group col-sm">
+                            {!! Form::label('number', 'Price Range MK', ['class'=>'control']) !!}
+                            {!! Form::selectRange('number', 10.00, 200.00, ['class'=>'control']); !!}
+                        </div>
+                        <div class="form-group col-sm">
+                            {!! Form::label('location', 'Location', ['class'=>'control']) !!}
+                            {!! Form::selectMonth('location', ['class'=>'control']) !!}
+                        </div>
+                        <div class="form-group col-sm">
+                            {!! Form::label('Date', 'Date', ['class'=>'control']) !!}
+                            {!! Form::date('name', \Carbon\Carbon::now(), ['class'=>'control']); !!}
+                        </div>
+                        <div class="col-sm">
+                            {!! Form::submit('Search', ['class'=>'btn btn-primary']) !!}
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        {!! Form::label('numnber', 'Price Range', ['class'=>'control']) !!}
-                        {!! Form::selectRange('number', 10, 60, ['class'=>'control']); !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('Month', 'Month', ['class'=>'control']) !!}
-                        {!! Form::selectMonth('Month', ['class'=>'control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('Date', 'Date', ['class'=>'control']) !!}
-                        {!! Form::date('name', \Carbon\Carbon::now(), ['class'=>'control']); !!}
-                    </div>
-
-                    {!! Form::submit('Search', ['class'=>'btn btn-primary']) !!}
                     {!! Form::close() !!}
 
-                </div>
-
             <div class="row gx-5">
-                <div class="h2 fs-1 mb-4">Resturant</div>
+                <div class="h2 fs-1 mb-4">Category</div>
 
                 @foreach($resturants as $resturant)
                     <div class="card" style="width: 20rem; margin: 5px; padding: 0px">
                         <img class="card-img-top" src="img/BannerFoodTruck.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{$resturant->name}}</h5>
-                            <p class="card-header">{{$resturant->category}}</p>
+                            <p class="card-header">{{$resturant->PhysicalAddress}}</p>
                             <p class="card-text">{{$resturant->location}}</p>
                             <a href="#" class="btn btn-primary">{{$resturant->id}}</a>
                         </div>
@@ -64,31 +62,6 @@
             <!--<a href="/Menu">Menu</a>-->
         </div>
     </section>
-
-    <section id="foodtruck">
-        <div class="container px-5">
-            <div class="row gx-5">
-                <div class="h2 fs-1 mb-4">Food Trucks</div>
-                    @foreach($resturants as $biz)
-                        <div class="card" style="width: 20rem; margin: 5px; padding: 0px">
-                            <img class="card-img-top" src="img/BannerFoodTruck.png" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$biz->name}}</h5>
-                                <p class="card-header">{{$biz->category}}</p>
-                                <p class="card-text">{{$biz->location}}</p>
-                                <a href="#" class="btn btn-primary">{{$biz->id}}</a>
-                            </div>
-                        </div>
-                    @endforeach
-            </div>
-        </div>
-            <div>
-                {{--$business->links()--}}
-                <!--<a href="/addbusiness">Add Resturant</a>-->
-                <!--<a href="/Menu">Menu</a>-->
-            </div>
-    </section>
-
     <!-- Mashead header-->
     <header class="masthead">
         <div class="container px-5">

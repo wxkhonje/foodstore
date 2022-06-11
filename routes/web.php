@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\FoodStoreController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ResturantController;
 use App\Mail\welcomemail;
@@ -48,7 +49,7 @@ Route::get('/oldui', function (){
 Route::post('/updateresturant/id',[ResturantController::class, 'edit']);
 
 Route::get('/addbusiness', function (){return view('businesscreate');});
-Route::get('/business', function (){return view('admin.business');});
+Route::get('/business', [BusinessController::class, 'index']);
 Route::get('/orders', function (){return view('admin.orders');});
 Route::get('/users', function (){return view('admin.users');});
 Route::get('/sitestatistics', function (){return view('admin.sitestatistics');});
@@ -62,4 +63,7 @@ Route::post('resturant',[FoodStoreController::class, 'store'])->name('resturantt
 
 Route::resource('/adminbiz',BusinessController::class);
 
-Route::post('/newbusiness',[BusinessController::class, 'store']);
+Route::post('/newbusiness',[BusinessController::class, 'store'])->name('newbusiness');
+Route::resource('/locate',LocationController::class);
+Route::get('/locations',[LocationController::class, 'index'])->name('location');
+Route::post('/locations',[LocationController::class, 'store'])->name('savelocation');

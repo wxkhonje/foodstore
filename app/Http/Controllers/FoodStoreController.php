@@ -14,7 +14,7 @@ class FoodStoreController extends Controller
      */
     public function index()
     {
-        $resturants = business::paginate(12)->where('category', 'Resturant');
+        $resturants = business::all();
         return view('foodstorefrontend')->with('resturants',$resturants);
     }
 
