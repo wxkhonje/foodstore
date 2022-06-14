@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sbadmin2.min.css" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
 </head>
 

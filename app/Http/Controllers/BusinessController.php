@@ -16,7 +16,7 @@ class BusinessController extends Controller
     public function index()
     {
         $locations = location::all();
-        $business = business::paginate(6);
+        $business = business::paginate(2);
         return view('admin.business')->with('business',$business)->with('location',$locations);
     }
 
@@ -52,7 +52,7 @@ class BusinessController extends Controller
             'instagramhandle'=>$request->get('instagramhandle')
         ]);
 
-        $business = business::paginate(6);
+        $business = business::simplepaginate(6);
         return view('admin.business')->with('business',$business);
     }
 

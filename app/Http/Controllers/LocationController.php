@@ -15,7 +15,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = location::paginate(10);
+        $locations = location::simplepaginate(4);
         return view('admin.location')->with('locations', $locations);
     }
 
@@ -44,7 +44,7 @@ class LocationController extends Controller
                 'mainlanguage'=>$request->get('mainlanguage')
             ]
         );
-        $locations = location::paginate(10);
+        $locations = location::simplepaginate(4);
         return view('admin.location')->with('locations', $locations);
     }
 
