@@ -39,7 +39,14 @@ Route::get('/createbusiness', [ResturantController::class, 'create']);
 Route::post('/addbusiness', [ResturantController::class, 'store']);
 
 Route::get('/', [FoodStoreController::class, 'index']);
-Route::get('/admin', [FoodStoreController::class, 'admin']);
+//Admin Dashboard Login
+//Route::get('/admin', [FoodStoreController::class, 'admin']);
+
+//when we access admin route we go to the login page
+Route::get('/admin', function(){
+    return view('auth.login');
+});
+
 Route::get('/Menu', [MenuController::class, 'index']);
 
 Route::get('/oldui', function (){
