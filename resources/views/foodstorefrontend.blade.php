@@ -27,12 +27,12 @@
                         </div>
                         <div class="form-group col-sm">
                             {!! Form::label('location', 'Location', ['class'=>'control']) !!}
-                            {!! Form::selectMonth('location', ['class'=>'control']) !!}
+                            {!! Form::select('location', $location, null, ['placeholder' => 'Select a Location', 'class'=>'form-control']) !!}
                         </div>
-                        <div class="form-group col-sm">
+                        <!--<div class="form-group col-sm">
                             {!! Form::label('Date', 'Date', ['class'=>'control']) !!}
                             {!! Form::date('name', \Carbon\Carbon::now(), ['class'=>'control']); !!}
-                        </div>
+                        </div>-->
                         <div class="col-sm">
                             {!! Form::submit('Search', ['class'=>'btn btn-primary']) !!}
                         </div>

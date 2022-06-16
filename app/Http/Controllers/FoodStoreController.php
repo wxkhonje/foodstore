@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\business;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class FoodStoreController extends Controller
@@ -15,7 +16,17 @@ class FoodStoreController extends Controller
     public function index()
     {
         $resturants = business::all();
-        return view('foodstorefrontend')->with('resturants',$resturants);
+        $locate = location::find(1);
+
+        dd($locate);
+
+        /*foreach ($locate as $location)
+        {
+            dd($location);
+        }*/
+
+        $locate = location::all()->toarray();
+        //return view('foodstorefrontend')->with('resturants',$resturants)->with('location', $test);
     }
 
     public function  admin()
