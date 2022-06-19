@@ -94,20 +94,26 @@
               <h4 class="footer-widget-title">Popular Category</h4>
               <ul>
                 <li>
-                  <a href="#">Wordpress</a>
+                  <a href="#">Resturants</a>
                 </li>
                 <li>
-                  <a href="#">Plugins</a>
+                  <a href="#">TakeAway</a>
                 </li>
                 <li>
-                  <a href="#">Joomla Template</a>
+                  <a href="#">Cafes</a>
                 </li>
                 <li>
-                  <a href="#">Admin Template</a>
+                  <a href="#">Bakeries</a>
                 </li>
                 <li>
-                  <a href="#">HTML Template</a>
+                  <a href="#">Bars</a>
                 </li>
+                <li>
+                  <a href="#">FoodTrucks</a>
+                </li>
+                <li>
+                  <a href="#">StreetFoods</a>
+                </li>                
               </ul>
             </div>
             <!-- end /.footer-menu -->
