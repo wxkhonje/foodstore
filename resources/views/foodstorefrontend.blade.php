@@ -49,7 +49,7 @@
                             <h5 class="card-title">{{$resturant->name}}</h5>
                             <p class="card-header">{{$resturant->PhysicalAddress}}</p>
                             <p class="card-text">{{$resturant->location}}</p>
-                            <a href="#" class="btn btn-primary">{{$resturant->id}}</a>
+                            <a href="/Menu" class="btn btn-primary">{{$resturant->id}}</a>
                         </div>
                     </div>
                 @endforeach
