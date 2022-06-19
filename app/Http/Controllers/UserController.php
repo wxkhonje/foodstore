@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\business;
-use App\Models\Location;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class FoodStoreController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,23 +14,8 @@ class FoodStoreController extends Controller
      */
     public function index()
     {
-        $resturants = business::all();
-        //$locate = location::all();
-
-        //dd($locate);
-
-        /*foreach ($locate as $location)
-        {
-            dd($location);
-        }*/
-
-        $locate = location::all()->toarray();
-        return view('foodstorefrontend')->with('resturants',$resturants)->with('location', $locate);
-    }
-
-    public function  admin()
-    {
-        return view('admin.dashboard');
+        $users = user::paginate(10);
+        return view('admin.users')->with('users', $users);
     }
 
     /**
@@ -52,13 +36,7 @@ class FoodStoreController extends Controller
      */
     public function store(Request $request)
     {
-        $resturants = business::all()->where('category',$request->get('category'));
-        //$resturants = business::paginate(30)->where('category','DessertShops');
-
-        //return view('foodstorefrontend')->with('business', $business);
-        //$resturants = business::where('category','Foodtruck')->get();
-        $locate = location::all()->toarray();
-        return view('foodstorefrontend')->with('resturants',$resturants)->with('location', $locate);
+        //
     }
 
     /**

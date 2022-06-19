@@ -31,8 +31,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                <li class="nav-item"><a class="nav-link me-lg-3" href="#resturant">Resturants</a></li>
-                <li class="nav-item"><a class="nav-link me-lg-3" href="#foodtruck">Food Trucks</a></li>
+                <!--<li class="nav-item"><a class="nav-link me-lg-3" href="#resturant">Resturants</a></li>
+                <li class="nav-item"><a class="nav-link me-lg-3" href="#foodtruck">Food Trucks</a></li>-->
             </ul>
             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
@@ -47,16 +47,7 @@
     @yield('content')
 </div>
 
-<!-- App badge section-->
-<section class="bg-gradient-primary-to-secondary" id="download">
-    <div class="container px-5">
-        <h2 class="text-center text-white font-alt mb-4">Get the app now!</h2>
-        <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
-            <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/google-play-badge.svg" alt="..." /></a>
-            <a href="#!"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="..." /></a>
-        </div>
-    </div>
-</section>
+
 <!-- Footer-->
 <footer class="bg-black text-center py-5">
     <div class="container px-5">

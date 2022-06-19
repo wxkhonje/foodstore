@@ -5,6 +5,8 @@ use App\Http\Controllers\FoodStoreController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ResturantController;
+use App\Http\Controllers\AdminController;
+use App\http\Controllers\UserController;
 use App\Mail\welcomemail;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Mail;
@@ -27,7 +29,10 @@ Route::get('/template', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//old route to home changed to home dashboard
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [AdminController::class, 'index'])->name('home');
 
 /*Route::get('/Resturants', function()
 {
@@ -58,7 +63,8 @@ Route::post('/updateresturant/id',[ResturantController::class, 'edit']);
 Route::get('/addbusiness', function (){return view('businesscreate');});
 Route::get('/business', [BusinessController::class, 'index']);
 Route::get('/orders', function (){return view('admin.orders');});
-Route::get('/users', function (){return view('admin.users');});
+//Route::get('/users', function (){return view('admin.users');});
+Route::get('/users', [UserController::class, 'index']);
 Route::get('/sitestatistics', function (){return view('admin.sitestatistics');});
 
 Route::get('/emails', function (){
