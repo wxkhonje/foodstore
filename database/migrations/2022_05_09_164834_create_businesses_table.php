@@ -14,18 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('businesses', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->String('name');
+            $table->string('description');
             $table->String('category');
-            $table->String('location');
-            $table->String('PhysicalAddress');
-            $table->integer('longitude');
-            $table->integer('latitude');
             $table->string('contactperson');
             $table->string('email');
             $table->string('cellnumber');
-            $table->string('facebookhandle')->nullable();
-            $table->string('instagramhandle')->nullable();
             $table->timestamps();
         });
     }

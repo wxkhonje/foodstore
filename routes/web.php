@@ -80,3 +80,19 @@ Route::post('/newbusiness',[BusinessController::class, 'store'])->name('newbusin
 Route::resource('/locate',LocationController::class);
 Route::get('/locations',[LocationController::class, 'index'])->name('location');
 Route::post('/locations',[LocationController::class, 'store'])->name('savelocation');
+
+Route::get('/onetoone', function(){
+
+    $biz = App\Models\business::find(1);
+
+    $location = new App\Models\location([
+        'district'=>'Blantyre',
+        'region'=>'Southern',
+        'country'=>'Malawi',
+        'mainlanguage'=>'Chichewa'
+    ]);
+
+    $biz->location()->save($location);
+    return "Business Assigned location";
+
+});

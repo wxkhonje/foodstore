@@ -10,8 +10,19 @@ class location extends Model
     use HasFactory;
     protected $fillable = [
         'district',
+        'PhysicalAddress',
+        'longitude',
+        'latitude',        
         'region',
         'country',
-        'mainlanguage'
+        'mainlanguage',
+        'facebookhandle',
+        'instagramhandle'        
         ];
+
+
+    public function business()
+    {
+        return $this->belongsto(business::class);
+    }
 }

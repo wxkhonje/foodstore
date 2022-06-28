@@ -28,27 +28,6 @@
                                                     'DessertShops'=>'DessertShops'
                                                  ], 'Resturant'); !!}
                 </div>
-                <div class="form-group col-sm">
-                    {!! Form::label('location', 'Location') !!}
-                    {!! Form::select('location',[
-                                                'Blantyre'=>'Blantyre',
-                                                'Lilongwe'=>'Lilongwe',
-                                                'Mzuzu'=>'Mzuzu',
-                                                'Zomba'=>'Zomba'
-                                                ], 'Blantyre'); !!}
-                </div>
-                <div class="form-group col-sm">
-                    {!! Form::label('PhysicalAddress', 'Physical Address') !!}
-                    {!! Form::text('PhysicalAddress'); !!}
-                </div>
-                <div class="form-group col-sm">
-                    {!! Form::label('longitude', 'Longitude') !!}
-                    {!! Form::text('longitude'); !!}
-                </div>
-                <div class="form-group col-sm">
-                    {!! Form::label('latitude', 'Latitude') !!}
-                    {!! Form::text('latitude'); !!}
-                </div>
             </div>
 
             <div class="row">
@@ -56,6 +35,10 @@
                     {!! Form::label('contactperson', 'Contact Person') !!}
                     {!! Form::text('contactperson'); !!}
                 </div>
+                <div class="form-group col-sm">
+                    {!! Form::label('description', 'Description') !!}
+                    {!! Form::text('description'); !!}
+                </div>                
                 <div class="form-group col-sm">
                     {!! Form::label('email', 'Email') !!}
                     {!! Form::text('email'); !!}
@@ -65,13 +48,34 @@
                     {!! Form::text('cellnumber'); !!}
                 </div>
                 <div class="form-group col-sm">
+                    {!! Form::label('PhysicalAddress', 'Physical Address') !!}
+                    {!! Form::text('PhysicalAddress'); !!}
+                </div>               
+                <div class="form-group col-sm">
+                    {!! Form::label('longitude', 'Longitude') !!}
+                    {!! Form::text('longitude'); !!}
+                </div>
+                <div class="form-group col-sm">
+                    {!! Form::label('latitude', 'Latitude') !!}
+                    {!! Form::text('latitude'); !!}
+                </div>                      
+                <div class="form-group col-sm">
+                    {!! Form::label('location', 'Location') !!}
+                    {!! Form::select('location',[
+                                                'Blantyre'=>'Blantyre',
+                                                'Lilongwe'=>'Lilongwe',
+                                                'Mzuzu'=>'Mzuzu',
+                                                'Zomba'=>'Zomba'
+                                                ], 'Blantyre'); !!}
+                </div>                   
+                <div class="form-group col-sm">
                     {!! Form::label('facebookhandle', 'Facebook Handle') !!}
                     {!! Form::text('facebookhandle'); !!}
-                </div>
+                </div>                             
                 <div class="form-group col-sm">
                     {!! Form::label('instagramhandle', 'Instagram Handle') !!}
                     {!! Form::text('instagramhandle'); !!}
-                </div>
+                </div>                         
                 <div class="col-sm">
                     {!! Form::submit('Save') !!}
                 </div>
@@ -91,20 +95,18 @@
                         <tr>
                             <th>Name</th>
                             <th>Category</th>
-                            <th>Location</th>
-                            <th>Physical Address</th>
+                            <th>Contact</th>
                             <th>Email</th>
-                            <th>FaceBook Handle</th>
+                            <th>Contact Number</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
                             <th>Name</th>
                             <th>Category</th>
-                            <th>Location</th>
-                            <th>Physical Address</th>
+                            <th>Contact</th>
                             <th>Email</th>
-                            <th>FaceBook Handle</th>
+                            <th>Contact Number</th>
                         </tr>
                         </tfoot>
                         <tbody>
@@ -112,10 +114,9 @@
                                 <tr>
                                 <td>{{$biz->name}}</td>
                                 <td>{{$biz->category}}</td>
-                                <td>{{$biz->location}}</td>
-                                <td>{{$biz->PhysicalAddress}}</td>
+                                <td>{{$biz->contactperson}}</td>
                                 <td>{{$biz->email}}</td>
-                                <td>{{$biz->facebookhandle}}</td>
+                                <td>{{$biz->cellnumber}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

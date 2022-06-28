@@ -38,19 +38,44 @@ class BusinessController extends Controller
      */
     public function store(Request $request)
     {
-        business::create([
-            'name'=>$request->get('name'),
-            'category'=>$request->get('category'),
-            'location'=>$request->get('location'),
-            'PhysicalAddress'=>$request->get('PhysicalAddress'),
-            'longitude'=>$request->get('longitude'),
-            'latitude'=>$request->get('latitude'),
-            'contactperson'=>$request->get('contactperson'),
-            'email'=>$request->get('email'),
-            'cellnumber'=>$request->get('cellnumber'),
-            'facebookhandle'=>$request->get('facebookhandle'),
-            'instagramhandle'=>$request->get('instagramhandle')
-        ]);
+        
+        $business = new business();
+        $business->name = $request->get('name');
+        $business->description = $request->get('description');
+        $business->category = $request->get('category');
+        $business->contactperson = $request->get('contactperson');        
+        $business->email = $request->get('email');
+        $business->cellnumber = $request->get('cellnumber');
+
+        $business->save();
+
+        $location = new location();
+
+        $location->district = $request->get('location');
+        $location->PhysicalAddress = $request->get('PhysicalAddress');
+        $location->longitude = $request->get('longitude');
+        $location->latitude = $request->get('latitude');
+        $location->region = 'Southern';
+        $location->country = 'Malawi';
+        $location->mainlanguage = 'Chichewa';
+        $location->facebookhandle = $request->get('facebookhandle');
+        $location->instagramhandle = $request->get('instagramhandle');
+
+        $business->location()->save($location);
+
+        // business::create([
+        //     'name'=>$request->get('name'),
+        //     'category'=>$request->get('category'),
+        //     'location'=>,
+        //     'PhysicalAddress'=>,
+        //     'longitude'=>,
+        //     'latitude'=>,
+        //     'contactperson'=>$request->get('contactperson'),
+        //     'email'=>$request->get('email'),
+        //     'cellnumber'=>$request->get('cellnumber'),
+        //     'facebookhandle'=>,
+        //     'instagramhandle'=>
+        // ]);
 
         $business = business::simplepaginate(6);
         return view('admin.business')->with('business',$business);

@@ -12,4 +12,9 @@ class Menu extends Model
     protected $fillable = [
         'name','description','price'
         ];
+
+        public function business()
+        {
+            return $this->belongsto(business::class);
+        }
 }

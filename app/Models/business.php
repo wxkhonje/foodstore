@@ -11,15 +11,20 @@ class business extends Model
 
     protected $fillable = [
         'name',
+        'description',
         'category',
-        'location',
-        'PhysicalAddress',
-        'longitude',
-        'latitude',
         'contactperson',
         'email',
-        'cellnumber',
-        'facebookhandle',
-        'instagramhandle'
+        'cellnumber'
     ];
+
+    public function location()
+    {
+        return $this->hasOne(location::class);
+    }
+
+    public function menu()
+    {
+        return $this->hasMany(Menu::class);
+    }
 }
