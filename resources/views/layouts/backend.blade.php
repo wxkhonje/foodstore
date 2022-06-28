@@ -73,6 +73,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Models:</h6>
                     <a class="collapse-item" href="/business">Business</a>
+                    <a class="collapse-item" href="/foodmenu">Business Menu</a>                    
                     <a class="collapse-item" href="/locations">Locations</a>
                     <a class="collapse-item" href="/orders">Orders</a>
                     <a class="collapse-item" href="/sitestatistics">SiteVisits</a>

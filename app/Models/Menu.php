@@ -17,4 +17,5 @@ class Menu extends Model
         {
             return $this->belongsto(business::class);
         }
+
 }

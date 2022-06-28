@@ -14,11 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('menus', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('business_id')->unsigned();
             $table->string('name');
             $table->text('description');
             $table->float('price');
             $table->timestamps();
+            $table->foreign('business_id')
+            ->references('id')
+            ->on('businesses')
+            ->onDelete('cascade');
         });
     }
 

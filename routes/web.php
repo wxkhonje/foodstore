@@ -7,6 +7,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ResturantController;
 use App\Http\Controllers\AdminController;
 use App\http\Controllers\UserController;
+use App\http\Controllers\FoodmenuController;
 use App\Mail\welcomemail;
 use Illuminate\Support\Facades\Route;
 use \Illuminate\Support\Facades\Mail;
@@ -53,6 +54,9 @@ Route::get('/admin', function(){
 });
 
 Route::get('/Menu', [MenuController::class, 'index']);
+
+Route::get('/foodmenu', [FoodmenuController::class, 'index']);
+Route::post('/addmenu',[FoodmenuController::class, 'store'])->name('addmenu');
 
 Route::get('/oldui', function (){
     return view('welcome');
