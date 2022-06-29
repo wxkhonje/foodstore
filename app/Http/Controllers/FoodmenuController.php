@@ -39,38 +39,27 @@ class FoodmenuController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file_extension = $file->getClientOriginalName();
+            $destination_path = public_path() . '/images/';
+            $filename = $file_extension;
+            $request->file('image')->move($destination_path, $filename);
 
-        //guessExtension();
-        //getMimeType();
-        //store();
-        //asStore();
-        //storepublicly();
-        //move();
-        
-        $newImageName = time() . '-' . $request->get('menuname'). '-' . 
-                        $request->get('business_id') . '.' . $request->image->extension();
+            $business = business::find($request->get('business_id'));
+            $menu = new Menu();
+            
+            $menu->name = $request->get('menuname');
+            $menu->description = $request->get('description');
+            $menu->price = $request->get('price');
+            $menu->image_path = $filename;
+    
+            $business->menu()->save($menu);            
+        }        
 
-
-        //$request->image->move(public_path('images', $newImageName));
-
-        //dd($path);
-
-
-
-
-
-       //$request->image->move(public_path('images', $newImageName));
-        
-       $business = business::find($request->get('business_id'));
-
-        $menu = new Menu();
-        
-        $menu->name = $request->get('menuname');
-        $menu->description = $request->get('description');
-        $menu->price = $request->get('price');
-        $menu->image_path = $newImageName;
-
-        $business->menu()->save($menu);
+        //$newImageName = time() . '-' . $request->get('menuname'). '-' . 
+        //                $request->get('business_id') . '.' . $request->image->extension();
+    
 
         $business = business::pluck('name','id');
         $Menus = Menu::all();

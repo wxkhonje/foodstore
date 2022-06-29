@@ -25,8 +25,9 @@
                     {!! Form::text('price'); !!}
                 </div>          
                 <div class="form-group col-sm">
-                    {!! Form::label('image', 'Image') !!}
-                    {!! Form::file('image'); !!}
+                    <!--{!! Form::label('image', 'Image') !!}
+                    {!! Form::file('image'); !!}-->
+                    <input type="file" name="image" />
                 </div>                                        
                 <div class="col-sm">
                     {!! Form::submit('Save') !!}
