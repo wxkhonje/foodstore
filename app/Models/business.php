@@ -27,4 +27,9 @@ class business extends Model
     {
         return $this->hasMany(Menu::class);
     }
+
+    public function businesstype()
+    {
+        return $this->hasOne(businesstype::class);
+    }
 }

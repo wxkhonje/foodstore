@@ -40,8 +40,27 @@ class FoodmenuController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request);
+        //guessExtension();
+        //getMimeType();
+        //store();
+        //asStore();
+        //storepublicly();
+        //move();
+        
+        $newImageName = time() . '-' . $request->get('menuname'). '-' . 
+                        $request->get('business_id') . '.' . $request->image->extension();
 
+
+        //$request->image->move(public_path('images', $newImageName));
+
+        //dd($path);
+
+
+
+
+
+       //$request->image->move(public_path('images', $newImageName));
+        
        $business = business::find($request->get('business_id'));
 
         $menu = new Menu();
@@ -49,6 +68,7 @@ class FoodmenuController extends Controller
         $menu->name = $request->get('menuname');
         $menu->description = $request->get('description');
         $menu->price = $request->get('price');
+        $menu->image_path = $newImageName;
 
         $business->menu()->save($menu);
 
@@ -88,7 +108,18 @@ class FoodmenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->store('public/images');
+
+        $request->validate([
+            'menuname'=>'required',
+            'description'=>'required',
+            'price'=>'required',
+            'image'=> 'required|mimes:jpg,png,jpeg|max:5048'
+
+        ]);        
+
+
     }
 
     /**

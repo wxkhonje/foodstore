@@ -6,7 +6,7 @@
         <h1 class="h3 mb-2 text-gray-800">Add MENU</h1>
 
         <div>
-            {!! Form::open(['method'=>'POST', 'route'=>'addmenu']) !!}
+            {!! Form::open(['method'=>'POST', 'route'=>'addmenu', 'enctype'=>'multipart/form-data']) !!}
             <div class="row">
             <div class="form-group col-sm">
                     {!! Form::label('businessname', 'Business Name') !!}
@@ -23,7 +23,11 @@
                 <div class="form-group col-sm">
                     {!! Form::label('price', 'Price') !!}
                     {!! Form::text('price'); !!}
-                </div>                                
+                </div>          
+                <div class="form-group col-sm">
+                    {!! Form::label('image', 'Image') !!}
+                    {!! Form::file('image'); !!}
+                </div>                                        
                 <div class="col-sm">
                     {!! Form::submit('Save') !!}
                 </div>

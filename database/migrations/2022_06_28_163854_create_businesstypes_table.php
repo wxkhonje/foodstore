@@ -13,18 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('business_id')->unsigned();
+        Schema::create('businesstypes', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->text('description');
-            $table->float('price');
-            $table->string('image_path');
+            $table->string('description');
             $table->timestamps();
-            $table->foreign('business_id')
-            ->references('id')
-            ->on('businesses')
-            ->onDelete('cascade');
         });
     }
 
@@ -35,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('businesstypes');
     }
 };
