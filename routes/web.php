@@ -62,6 +62,7 @@ Route::get('/admin', function(){
 });
 
 Route::get('/Menu', [MenuController::class, 'index']);
+Route::get('/Menu/{id}', [MenuController::class, 'show']);
 
 Route::get('/foodmenu', [FoodmenuController::class, 'index']);
 Route::post('/addmenu',[FoodmenuController::class, 'store'])->name('addmenu');

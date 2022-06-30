@@ -44,12 +44,12 @@
 
                 @foreach($resturants as $resturant)
                     <div class="card" style="width: 20rem; margin: 5px; padding: 0px">
-                        <img class="card-img-top" src="img/BannerFoodTruck.png" alt="Card image cap">
+                        <img class="card-img-top" src="{{ asset('images/'.$resturant->image_path) }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{$resturant->name}} - {{$resturant->location->district}}</h5>
                             <p class="card-header">{{$resturant->cellnumber}}</p>
-                            <p class="card-text">{{$resturant->location->district}}</p>
-                            <a href="/Menu" class="btn btn-primary">{{$resturant->location->PhysicalAddress}}</a>
+                            <p class="card-text">{{$resturant->location->PhysicalAddress}}</p>
+                            <a href="/Menu/{{$resturant->id}}" class="btn btn-primary">{{$resturant->name}}</a>
                         </div>
                     </div>
                 @endforeach

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->String('name');
             $table->string('description');
+            $table->string('image_path');
             $table->String('category');
             $table->string('contactperson');
             $table->string('email');

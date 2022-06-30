@@ -38,10 +38,24 @@ class BusinessController extends Controller
      */
     public function store(Request $request)
     {
-        
         $business = new business();
+        
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $file_extension = $file->getClientOriginalName();
+            $destination_path = public_path() . '/images/';
+            $filename = str_replace(' ', '', $file_extension);
+            $request->file('image')->move($destination_path, $filename);
+
+            $business->image_path = $filename;         
+        } 
+        else{
+            $business->image_path = 'NoImageProvided.jpg';
+        }
+
         $business->name = $request->get('name');
         $business->description = $request->get('description');
+
         $business->category = $request->get('category');
         $business->contactperson = $request->get('contactperson');        
         $business->email = $request->get('email');

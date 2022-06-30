@@ -18,7 +18,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="blog__item">
                                 <div class="blog__item__pic">
-                                    <img src={{ asset('images/'.$menu->image_path) }} alt="">
+                                    <img src={{ asset('images/'.$menu->image_path) }} alt="Menu">
                                 </div>
                                 <div class="blog__item__text">
                                     <p>{{$menu->name}}</p>

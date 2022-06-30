@@ -6,7 +6,7 @@
         <h1 class="h3 mb-2 text-gray-800">Add Business</h1>
 
         <div>
-            {!! Form::open(['method'=>'POST', 'route'=>'newbusiness']) !!}
+            {!! Form::open(['method'=>'POST', 'enctype'=>'multipart/form-data', 'route'=>'newbusiness']) !!}
             <div class="row">
                 <div class="form-group col-sm">
                     {!! Form::label('name', 'Name') !!}
@@ -75,7 +75,11 @@
                 <div class="form-group col-sm">
                     {!! Form::label('instagramhandle', 'Instagram Handle') !!}
                     {!! Form::text('instagramhandle'); !!}
-                </div>                         
+                </div>                     
+                <div class="form-group col-sm">
+                    {!! Form::label('image', 'Business Image') !!}
+                    {!! Form::file('image'); !!}
+                </div>                       
                 <div class="col-sm">
                     {!! Form::submit('Save') !!}
                 </div>

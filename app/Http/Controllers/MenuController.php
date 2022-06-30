@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\business;
 
 class MenuController extends Controller
 {
@@ -47,7 +48,12 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        //
+
+        //$business = business::find($id);
+        //$menu = Menu->business()->get($business);
+
+        $menu = Menu::all()->where('business_id', $id);
+        return view('resturant.menu')->with('Menus', $menu);
     }
 
     /**

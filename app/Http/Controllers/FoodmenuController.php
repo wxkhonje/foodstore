@@ -43,7 +43,6 @@ class FoodmenuController extends Controller
             $file = $request->file('image');
             $file_extension = $file->getClientOriginalName();
             $destination_path = public_path() . '/images/';
-            //$new_str = str_replace(' ', '', $str);
             $filename = str_replace(' ', '', $file_extension);
             $request->file('image')->move($destination_path, $filename);
 

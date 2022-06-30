@@ -12,6 +12,7 @@ class business extends Model
     protected $fillable = [
         'name',
         'description',
+        'image_path',
         'category',
         'contactperson',
         'email',
