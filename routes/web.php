@@ -24,6 +24,14 @@ use \Illuminate\Support\Facades\Mail;
 |
 */
 
+Route::get('/replace', function(){
+
+    $str = 'This is a simple piece of text.';
+    $new_str = str_replace(' ', '', $str);
+
+    return $new_str;
+});
+
 Route::get('/template', function () {
     return view('welcome');
 });
