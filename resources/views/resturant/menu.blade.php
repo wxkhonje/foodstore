@@ -23,6 +23,9 @@
                                 <div class="blog__item__text">
                                     <p>{{$menu->name}}</p>
                                 </div>
+                                <div class="blog__item__text">
+                                    <p>{{$menu->description}}</p>
+                                </div>                                                                
                             </div>
                         </div>
                     @endforeach
