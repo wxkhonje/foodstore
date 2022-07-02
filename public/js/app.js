@@ -5896,6 +5896,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
+ //import Modal from "./components/Modal";
+
 
 
 
@@ -5920,7 +5922,7 @@ var Resturantdetails = /*#__PURE__*/function (_Component) {
     key: "componentDidMount",
     value: function () {
       var _componentDidMount = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var res, _useState, _useState2, show, setShow, handleClose, handleShow;
+        var res, _useState, _useState2, isOpen, setIsOpen;
 
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
@@ -5934,17 +5936,9 @@ var Resturantdetails = /*#__PURE__*/function (_Component) {
                 this.setState({
                   message: res.data.title
                 });
-                _useState = useState(false), _useState2 = _slicedToArray(_useState, 2), show = _useState2[0], setShow = _useState2[1];
+                _useState = useState(false), _useState2 = _slicedToArray(_useState, 2), isOpen = _useState2[0], setIsOpen = _useState2[1];
 
-                handleClose = function handleClose() {
-                  return setShow(false);
-                };
-
-                handleShow = function handleShow() {
-                  return setShow(true);
-                };
-
-              case 7:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -5961,10 +5955,19 @@ var Resturantdetails = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        className: "btn btn-primary",
-        children: "Details"
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "btn btn-primary",
+          onClick: test,
+          children: "Details"
+        })
       });
+
+      function test() {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: "Welcome to React Event Handlers"
+        });
+      }
     }
   }]);
 
