@@ -49,7 +49,8 @@
                             <h5 class="card-title">{{$resturant->name}} - {{$resturant->location->district}}</h5>
                             <p class="card-header">{{$resturant->cellnumber}}</p>
                             <p class="card-text">{{$resturant->location->PhysicalAddress}}</p>
-                            <a href="/Menu/{{$resturant->id}}" class="btn btn-primary">{{$resturant->name}}</a>
+                            <a href="/Menu/{{$resturant->id}}" class="btn btn-primary">{{$resturant->name}} - Menu</a>
+                            <span id="resturantdetails"></span>
                         </div>
                     </div>
                 @endforeach
@@ -62,4 +63,27 @@
             <!--<a href="/Menu">Menu</a>-->
         </div>
     </section>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Food Store Details</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="resturantdetails">
+                </div>                                         
+                Food Store Details will come here
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>    
 @endsection
