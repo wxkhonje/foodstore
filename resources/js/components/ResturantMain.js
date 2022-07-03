@@ -43,26 +43,16 @@ class ResturantMain extends Component{
         return(
             <ResturantRow>
                 {this.state.FoodstoreList.map(d => (
-
-                <div className="card" key={d.id}>
-                <img className="card-img-top" src={d.name} alt={d.name} />
-                    <div className="card-body">
-                        <h5 className="card-title">{d.name}</h5>
-                        <p className="card-header">{d.name}</p>
-                        <p className="card-text">{d.name}</p>
-                        <a href="url" className="btn btn-primary">{d.name}</a>
-                        <span className='btn btn-primary'>{d.name}</span>
-                    </div>
-                </div>
+                    <Resturant info={{
+                        thumbnail:d.image_path,
+                        title:d.name,
+                        district:d.district,
+                        cellnumber:d.cellnumber,
+                        physicallocation:d.physicallocation,
+                        menu:d.name,
+                        id:d.id
+                    }} />
                 ))} 
-                <Resturant info={{
-                                    thumbnail:'images/1656440563-Spaghetti-1.jpg',
-                                    title:this.state.message,
-                                    district:'Blantyre',
-                                    cellnumber:'+265999319496',
-                                    physicallocation:'Behind Reserve Bank',
-                                    menu:this.state.message
-                }} />
             </ResturantRow>
         );
     }

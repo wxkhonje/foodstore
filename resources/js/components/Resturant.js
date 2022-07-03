@@ -10,7 +10,7 @@ class Resturant extends Component{
                         <p className="card-header">{this.props.info.cellnumber}</p>
                         <p className="card-text">{this.props.info.physicallocation}</p>
                         <a href="url" className="btn btn-primary">{this.props.info.menu}</a>
-                        <span className='btn btn-primary'>Modal</span>
+                        <span className='btn btn-primary' href={this.props.info.id}>Modal</span>
                     </div>
             </div>
         );

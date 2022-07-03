@@ -5917,6 +5917,7 @@ var Resturant = /*#__PURE__*/function (_Component) {
             children: this.props.info.menu
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
             className: "btn btn-primary",
+            href: this.props.info.id,
             children: "Modal"
           })]
         })]
@@ -5973,7 +5974,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 
 
 
@@ -6053,45 +6053,20 @@ var ResturantMain = /*#__PURE__*/function (_Component) {
           info: resturantinfo
         }, restura.id);
       });
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_ResturantRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        children: [this.state.FoodstoreList.map(function (d) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "card",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-              className: "card-img-top",
-              src: d.name,
-              alt: d.name
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "card-body",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
-                className: "card-title",
-                children: d.name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                className: "card-header",
-                children: d.name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-                className: "card-text",
-                children: d.name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-                href: "url",
-                className: "btn btn-primary",
-                children: d.name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-                className: "btn btn-primary",
-                children: d.name
-              })]
-            })]
-          }, d.id);
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Resturant__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          info: {
-            thumbnail: 'images/1656440563-Spaghetti-1.jpg',
-            title: this.state.message,
-            district: 'Blantyre',
-            cellnumber: '+265999319496',
-            physicallocation: 'Behind Reserve Bank',
-            menu: this.state.message
-          }
-        })]
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ResturantRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        children: this.state.FoodstoreList.map(function (d) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Resturant__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            info: {
+              thumbnail: d.image_path,
+              title: d.name,
+              district: d.district,
+              cellnumber: d.cellnumber,
+              physicallocation: d.physicallocation,
+              menu: d.name,
+              id: d.id
+            }
+          });
+        })
       });
     }
   }]);
