@@ -63,6 +63,11 @@
             <!--<a href="/Menu">Menu</a>-->
         </div>
     </section>
+    <section>
+        <div id="reactresturant" class="container px-12">
+            welcome to react feeding
+        </div>
+    </section>
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

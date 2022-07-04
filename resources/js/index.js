@@ -5,6 +5,11 @@ import Component2 from "./components/Component2";
 import Component3 from "./components/Component3";
 import Menuitem from "./components/Menuitem";
 import Resturantdetails from "./components/Resturantdetails";
+import ResturantMain from "./components/ResturantMain"
+
+if (document.getElementById('reactresturant')) {
+    ReactDOM.render(<ResturantMain />, document.getElementById('reactresturant'));
+}
 
 if (document.getElementById('reactcomponent')) {
     ReactDOM.render(<Example />, document.getElementById('reactcomponent'));

@@ -22,8 +22,9 @@ class ResturantController extends Controller
 
     public function testapi()
     {
-        $response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
-        return response()->json($response->json(), 200);
+        //$response = Http::get('https://jsonplaceholder.typicode.com/todos/1');
+        $response = business::all();
+        return response()->json($response, 200);
     }
 
     /**
