@@ -26,36 +26,36 @@ class ResturantMain extends Component{
 
     render() {
 
-        let resturantinfo = {};
-        let resturantdata = this.state.FoodstoreList.map((restura)=>{
-            resturantinfo = {
-                thumbnail:restura.image_path,
-                title:restura.name,
-                district:restura.description,
-                cellnumber:restura.cellnumber,
-                physicallocation:restura.contactperson,
-                menu:restura.category                
-            }
+            const Fragment = React.Fragment;
+            const rowsize = 4;
+            let resturantinfo = {};
 
-            return <Resturant key={restura.id} info={resturantinfo} />
-        })
+            let resturantdata = this.state.FoodstoreList.map((rest)=>{
+                resturantinfo = {
+                                    thumbnail:'./images/'+rest.image_path,
+                                    title:rest.name,
+                                    district:rest.district,
+                                    cellnumber:rest.cellnumber,
+                                    physicallocation:rest.physicallocation,
+                                    menu:rest.name,
+                                    id:rest.id                    
+                };
 
-        return(
-            <ResturantRow>
-                {this.state.FoodstoreList.map(d => (
-                    <Resturant info={{
-                        thumbnail:d.image_path,
-                        title:d.name,
-                        district:d.district,
-                        cellnumber:d.cellnumber,
-                        physicallocation:d.physicallocation,
-                        menu:d.name,
-                        id:d.id
-                    }} />
-                ))} 
-            </ResturantRow>
-        );
-    }
+                return <Resturant key={rest.id} info={resturantinfo} />
+            }).reduce((r, element, index)=>{
+                index % rowsize === 0 && r.push([]);
+                r[r.length - 1].push(element);
+                return r;
+            }, [])
+            .map((result, index) =>{
+                return <ResturantRow key={index}>{result}</ResturantRow>
+            });
+
+            return (
+                <Fragment>
+                    {resturantdata}
+                </Fragment>
+                );}
 };
 
 export default ResturantMain;

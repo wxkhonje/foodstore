@@ -5895,7 +5895,7 @@ var Resturant = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "card",
+        className: "card col-3",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
           className: "card-img-top",
           src: this.props.info.thumbnail,
@@ -6039,34 +6039,33 @@ var ResturantMain = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var Fragment = react__WEBPACK_IMPORTED_MODULE_0__.Fragment;
+      var rowsize = 4;
       var resturantinfo = {};
-      var resturantdata = this.state.FoodstoreList.map(function (restura) {
+      var resturantdata = this.state.FoodstoreList.map(function (rest) {
         resturantinfo = {
-          thumbnail: restura.image_path,
-          title: restura.name,
-          district: restura.description,
-          cellnumber: restura.cellnumber,
-          physicallocation: restura.contactperson,
-          menu: restura.category
+          thumbnail: './images/' + rest.image_path,
+          title: rest.name,
+          district: rest.district,
+          cellnumber: rest.cellnumber,
+          physicallocation: rest.physicallocation,
+          menu: rest.name,
+          id: rest.id
         };
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Resturant__WEBPACK_IMPORTED_MODULE_1__["default"], {
           info: resturantinfo
-        }, restura.id);
+        }, rest.id);
+      }).reduce(function (r, element, index) {
+        index % rowsize === 0 && r.push([]);
+        r[r.length - 1].push(element);
+        return r;
+      }, []).map(function (result, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ResturantRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          children: result
+        }, index);
       });
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ResturantRow__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        children: this.state.FoodstoreList.map(function (d) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Resturant__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            info: {
-              thumbnail: d.image_path,
-              title: d.name,
-              district: d.district,
-              cellnumber: d.cellnumber,
-              physicallocation: d.physicallocation,
-              menu: d.name,
-              id: d.id
-            }
-          });
-        })
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Fragment, {
+        children: resturantdata
       });
     }
   }]);
@@ -6132,7 +6131,7 @@ var ResturantRow = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "row gx-5",
+        className: "row",
         children: this.props.children
       });
     }

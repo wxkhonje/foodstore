@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class ResturantRow extends Component{
     render() {
         return(
-            <div className="row gx-5">
+            <div className="row">
                 {this.props.children}
             </div>
         );
