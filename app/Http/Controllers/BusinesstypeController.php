@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\businesstype;
+use Illuminate\Http\Request;
 use App\Http\Requests\StorebusinesstypeRequest;
 use App\Http\Requests\UpdatebusinesstypeRequest;
+use App\Http\Resources\BusinessTypeResource;
 
 class BusinesstypeController extends Controller
 {
@@ -13,9 +15,17 @@ class BusinesstypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if (strpos($request->path(), 'api/') === 0) {
+            return BusinessTypeResource::collection(
+                businesstype::all());
+        }
+        else
+        {              
+            $businesstype = businesstype::paginate(10);
+            return view('admin.school', compact('businesstype'));
+        }
     }
 
     /**
@@ -36,7 +46,21 @@ class BusinesstypeController extends Controller
      */
     public function store(StorebusinesstypeRequest $request)
     {
-        //
+        if (strpos($request->path(), 'api/') === 0) {
+            $request->validated($request->all());
+
+            $businesstype = businesstype::create([
+                'name' => $request->name,
+                'description'=> $request->description
+            ]);
+
+            return new BusinessTypeResource($businesstype);
+        }
+        else
+        {              
+            //$businesstype = businesstype::paginate(10);
+            //return view('admin.businesstype', compact('businesstype'));
+        }
     }
 
     /**

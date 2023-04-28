@@ -6,7 +6,7 @@
         <h1 class="h3 mb-2 text-gray-800">Add Business</h1>
 
         <div>
-            {!! Form::open(['method'=>'POST', 'enctype'=>'multipart/form-data', 'route'=>'newbusiness']) !!}
+            {!! Form::open(['method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
             <div class="row">
                 <div class="form-group col-sm">
                     {!! Form::label('name', 'Name') !!}

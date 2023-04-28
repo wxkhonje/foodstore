@@ -1,9 +1,10 @@
 @extends('layouts.frontend')
 @section('content')
+
     <!-- Resturant section-->
     <section id="resturant">
         <div class="container px-12">
-                    {!! Form::open(['method'=>'POST', 'route'=>'resturanttest']) !!}
+                    {!! Form::open(['method'=>'POST']) !!}
                     <div class="row">
                         <div class="form-group col-sm">
                             {!! Form::label('title', 'Category', ['class'=>'control']); !!}
@@ -41,54 +42,9 @@
 
             <div class="row gx-5">
                 <div class="h2 fs-1 mb-4">Category</div>
-
-                @foreach($resturants as $resturant)
-                    <div class="card" style="width: 20rem; margin: 5px; padding: 0px">
-                        <img class="card-img-top" src="{{ asset('images/'.$resturant->image_path) }}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$resturant->name}} - {{$resturant->location->district}}</h5>
-                            <p class="card-header">{{$resturant->cellnumber}}</p>
-                            <p class="card-text">{{$resturant->location->PhysicalAddress}}</p>
-                            <a href="/Menu/{{$resturant->id}}" class="btn btn-primary">{{$resturant->name}} - Menu</a>
-                            <span id="resturantdetails"></span>
-                        </div>
-                    </div>
-                @endforeach
-
+                <div id="searchbar" class="container px-12"></div>
+                <div id="reactresturant" class="container px-12"></div>
             </div>
         </div>
-        <div>
-            {{--$business->links()--}}
-            <!--<a href="/addbusiness">Add Resturant</a>-->
-            <!--<a href="/Menu">Menu</a>-->
-        </div>
-    </section>
-    <section>
-        <div id="reactresturant" class="container px-12">
-            welcome to react feeding
-        </div>
-    </section>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Food Store Details</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div id="resturantdetails">
-                </div>                                         
-                Food Store Details will come here
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>    
+    </section>   
 @endsection

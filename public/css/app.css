@@ -10840,6 +10840,9 @@ video {
 .float-right {
   float: right;
 }
+.m-0\.5 {
+  margin: 0.125rem;
+}
 .m-0 {
   margin: 0px;
 }

@@ -8,10 +8,13 @@ use App\Http\Controllers\ResturantController;
 use App\Http\Controllers\AdminController;
 use App\http\Controllers\UserController;
 use App\http\Controllers\FoodmenuController;
-use App\Mail\welcomemail;
+use App\http\Controllers\EmailController;
+use App\http\Controllers\AuthenticationController;
+use App\http\Controllers\OrderController;
+use App\http\Controllers\GalleryController;
+use App\http\Controllers\SitestatisticController;
+use App\http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-use \Illuminate\Support\Facades\Mail;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -24,88 +27,25 @@ use \Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/replace', function(){
-
-    $str = 'This is a simple piece of text.';
-    $new_str = str_replace(' ', '', $str);
-
-    return $new_str;
-});
-
-Route::get('/template', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-//old route to home changed to home dashboard
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Entry Route for Front End
 
-Route::get('/home', [AdminController::class, 'index'])->name('home');
+Route::get('/', [FoodStoreController::class, 'index'])->name('/');
 
-/*Route::get('/Resturants', function()
-{
-
-});*/
-
-Route::get('/Resturants', [ResturantController::class, 'index']);
-Route::get('/createbusiness', [ResturantController::class, 'create']);
-Route::post('/addbusiness', [ResturantController::class, 'store']);
-
-Route::get('/', [FoodStoreController::class, 'index']);
-//Admin Dashboard Login
-//Route::get('/admin', [FoodStoreController::class, 'admin']);
-
-//when we access admin route we go to the login page
-Route::get('/admin', function(){
-    return view('auth.login');
-});
-
-Route::get('/Menu', [MenuController::class, 'index']);
-Route::get('/Menu/{id}', [MenuController::class, 'show']);
-
-Route::get('/foodmenu', [FoodmenuController::class, 'index']);
-Route::post('/addmenu',[FoodmenuController::class, 'store'])->name('addmenu');
-
-Route::get('/oldui', function (){
-    return view('welcome');
-});
-
-Route::post('/updateresturant/id',[ResturantController::class, 'edit']);
-
-Route::get('/addbusiness', function (){return view('businesscreate');});
-Route::get('/business', [BusinessController::class, 'index']);
-Route::get('/orders', function (){return view('admin.orders');});
-//Route::get('/users', function (){return view('admin.users');});
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/sitestatistics', function (){return view('admin.sitestatistics');});
-
-Route::get('/emails', function (){
-    Mail::to('xavier.khonje@gmail.com')->send(new welcomemail());
-    return new welcomemail();
-});
-
-Route::post('resturant',[FoodStoreController::class, 'store'])->name('resturanttest');
-
-Route::resource('/adminbiz',BusinessController::class);
-
-Route::post('/newbusiness',[BusinessController::class, 'store'])->name('newbusiness');
-Route::resource('/locate',LocationController::class);
-Route::get('/locations',[LocationController::class, 'index'])->name('location');
-Route::post('/locations',[LocationController::class, 'store'])->name('savelocation');
-
-Route::get('/onetoone', function(){
-
-    $biz = App\Models\business::find(1);
-
-    $location = new App\Models\location([
-        'district'=>'Blantyre',
-        'region'=>'Southern',
-        'country'=>'Malawi',
-        'mainlanguage'=>'Chichewa'
-    ]);
-
-    $biz->location()->save($location);
-    return "Business Assigned location";
-
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::resource('/admin',AdminController::class);
+    Route::resource('/orders',AdminController::class);
+    Route::resource('/gallery',GalleryController::class);
+    Route::resource('/sitestatistics',SitestatisticController::class);
+    Route::resource('/Menu',MenuController::class);
+    Route::resource('/Products',ProductController::class);
+    Route::resource('/Resturant',ResturantController::class);
+    Route::resource('/foodmenu',FoodmenuController::class);
+    Route::resource('/business', BusinessController::class);
+    Route::resource('/locations',LocationController::class);
+    Route::resource('/users',UserController::class);
+    Route::resource('/email',EmailController::class);
+    Route::resource('/foodstore',FoodStoreController::class);
+    Route::resource('/Authentication',AuthenticationController::class);
 });

@@ -6,9 +6,14 @@ import Component3 from "./components/Component3";
 import Menuitem from "./components/Menuitem";
 import Resturantdetails from "./components/Resturantdetails";
 import ResturantMain from "./components/ResturantMain"
+import Searchbar from "./components/Searchbar";
 
 if (document.getElementById('reactresturant')) {
     ReactDOM.render(<ResturantMain />, document.getElementById('reactresturant'));
+}
+
+if (document.getElementById('searchbar')) {
+    ReactDOM.render(<Searchbar />, document.getElementById('searchbar'));
 }
 
 if (document.getElementById('reactcomponent')) {
