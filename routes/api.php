@@ -4,6 +4,11 @@ use App\Http\Controllers\ResturantController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\BusinesstypeController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProductController;
+use App\http\Controllers\AttributeController;
+use App\http\Controllers\ProductAttributeValueController;
+use App\http\Controllers\AddressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +29,11 @@ Route::apiResource('/gallery', GalleryController::class);
 Route::apiResource('/resturant', ResturantController::class);
 Route::apiResource('/business', BusinessController::class);
 Route::apiResource('/businesstype', BusinesstypeController::class);
+Route::apiResource('/productcategory', CategorieController::class);
+Route::apiResource('/product', ProductController::class);
+Route::apiResource('/attributes', AttributeController::class);
+Route::apiResource('/address', AddressController::class);
+Route::apiResource('/Pav', ProductAttributeValueController::class);
 
 
 //Protected routes

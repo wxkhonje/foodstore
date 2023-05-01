@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Resources\ProductResource;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -13,9 +15,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.product');
+        if (strpos($request->path(), 'api/') === 0) {
+            return ProductResource::collection(
+                $products = Product::all()
+            );
+        }
+        else
+        {              
+            $products = Product::all();
+            return view('admin.product')->with('products',$products);
+        }
     }
 
     /**
@@ -36,7 +47,25 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        if (strpos($request->path(), 'api/') === 0) {
+
+            $request->validated($request->all());
+            Product::create([
+                'name'=>$request->name,
+                'description'=>$request->description,
+                'price'=>$request->price,
+                'category_id'=>$request->category_id    
+            ]);   
+
+            return ProductResource::collection(
+                $products = Product::all()
+            );
+        }
+        else
+        {              
+            $products = Product::all();
+            return view('admin.product')->with('products',$products);
+        }
     }
 
     /**
@@ -70,7 +99,24 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        if (strpos($request->path(), 'api/') === 0) {
+
+            $product->name = $request->name;
+            $product->description = $request->description;
+            $product->price = $request->price;
+            $product->category_id = $request->category_id;
+
+            $categorie->save();       
+
+            return ProductResource::collection(
+                $products = Product::all()
+            );
+        }
+        else
+        {              
+            $products = Product::all();
+            return view('admin.product')->with('products',$products);
+        }
     }
 
     /**

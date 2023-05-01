@@ -44,13 +44,23 @@ class FoodStoreController extends Controller
      */
     public function store(Request $request)
     {
-        $resturants = business::all()->where('category',$request->get('category'));
-        //$resturants = business::paginate(30)->where('category','DessertShops');
 
-        //return view('foodstorefrontend')->with('business', $business);
-        //$resturants = business::where('category','Foodtruck')->get();
-        $locate = location::all()->toarray();
-        return view('foodstorefrontend')->with('resturants',$resturants)->with('location', $locate);
+        if (strpos($request->path(), 'api/') === 0) {
+            return BusinessResource::collection(
+                business::all());
+        }
+        else
+        {              
+            //$resturants = business::all()->where('category',$request->get('category'));
+            $businesses = business::all();
+            //$businesses = business::paginate(30)->where('category','DessertShops');
+            //$businesses = business::paginate(30);
+    
+            //return view('foodstorefrontend')->with('business', $business);
+            //$resturants = business::where('category','Foodtruck')->get();
+            $locate = location::all()->toarray();
+            return view('foodstorefrontend')->with('businesses',$businesses)->with('location', $locate);
+        }
     }
 
     /**

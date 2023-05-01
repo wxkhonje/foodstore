@@ -14,6 +14,8 @@ use App\http\Controllers\OrderController;
 use App\http\Controllers\GalleryController;
 use App\http\Controllers\SitestatisticController;
 use App\http\Controllers\ProductController;
+use App\http\Controllers\AttributeController;
+use App\http\Controllers\ProductAttributeValueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +35,14 @@ Auth::routes();
 
 Route::get('/', [FoodStoreController::class, 'index'])->name('/');
 
+//Public Routes
+Route::resource('/foodstore',FoodStoreController::class);
+
+//Private Routes
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('/admin',AdminController::class);
+    Route::resource('/attributes',AttributeController::class);
+    Route::resource('/Pav',ProductAttributeValueController::class);
     Route::resource('/orders',AdminController::class);
     Route::resource('/gallery',GalleryController::class);
     Route::resource('/sitestatistics',SitestatisticController::class);
@@ -46,6 +54,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('/locations',LocationController::class);
     Route::resource('/users',UserController::class);
     Route::resource('/email',EmailController::class);
-    Route::resource('/foodstore',FoodStoreController::class);
     Route::resource('/Authentication',AuthenticationController::class);
 });

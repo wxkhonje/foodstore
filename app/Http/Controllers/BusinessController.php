@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\business;
-use App\Models\location;
-use App\Http\Resources\BusinessResource;
+use App\Models\Business;
+use App\Http\Requests\StoreBusinessRequest;
+use App\Http\Requests\UpdateBusinessRequest;
 use Illuminate\Http\Request;
 
 class BusinessController extends Controller
@@ -41,16 +41,27 @@ class BusinessController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreBusinessRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBusinessRequest $request)
     {
-
         if (strpos($request->path(), 'api/') === 0) {
-            $request->validated($request->all());
+            //$request->validated($request->all());
 
-            return "New Business";
+            business::create([
+                'name'=>$request->name,
+                'description'=>$request->description,
+                'image_path'=>$request->image_path,
+                'category'=>$request->category,
+                'contactperson'=>$request->contactperson,  
+                'email'=>$request->email,
+                'cellnumber'=>$request->cellnumber,  
+                'user_id'=>$request->user_id 
+          ]);            
+
+            return BusinessResource::collection(
+                business::all());
             /*$businesstype = businesstype::create([
                 'name' => $request->name,
                 'description'=> $request->description
@@ -123,21 +134,21 @@ class BusinessController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Business  $business
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Business $business)
     {
-        return $id;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Business  $business
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Business $business)
     {
         //
     }
@@ -145,22 +156,39 @@ class BusinessController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateBusinessRequest  $request
+     * @param  \App\Models\Business  $business
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBusinessRequest $request, Business $business)
     {
-        //
+        if (strpos($request->path(), 'api/') === 0) {
+
+            $business->name = $request->name;
+            $business->description = $request->description;
+            $business->category = $request->category;
+            $business->contactperson = $request->contactperson;
+            $business->email = $request->email;
+            $business->cellnumber = $request->cellnumber;
+
+            $business->save();
+
+            return new BusinessResource($business);
+        }
+        else
+        {              
+            $business = business::paginate(15);
+            return view('admin.business')->with('business',$business);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Business  $business
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Business $business)
     {
         //
     }

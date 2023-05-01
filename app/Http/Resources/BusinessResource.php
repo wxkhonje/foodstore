@@ -24,6 +24,11 @@ class BusinessResource extends JsonResource
                 'contactperson'=>$this->contactperson,
                 'email'=>$this->email,
                 'cellnumber'=>$this->cellnumber
+            ],
+            'relationships' => [
+                'id' => (string)$this->User->id,
+                'name' => (string)$this->User->name
+
             ]
         ]; 
     }
