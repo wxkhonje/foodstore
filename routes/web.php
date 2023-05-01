@@ -55,5 +55,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('/users',UserController::class);
     Route::resource('/email',EmailController::class);
     Route::resource('/Authentication',AuthenticationController::class);
-    
 });
