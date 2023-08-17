@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'local_domain' => env('MAIL_EHLO_DOMAIN'),
+
     'default' => env('MAIL_MAILER', 'smtp'),
 
     /*

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\order;
+use App\Models\Customer;
+use \Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -22,10 +25,30 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //return view('auth.login');
-        return view('admin.dashboard');
+        $orders = order::all();
+        $orderCount = $orders->count();
+        Session::put('NewOrdersCount', $orderCount);
+
+        $Customer = Customer::all();
+        $customerCount = $Customer->count();
+        Session::put('TotalCustomers', $customerCount);
+
+        if (strpos($request->path(), 'api/') === 0) {    
+            //return view('auth.login');        
+            return OrderResource::collection(
+                order::all());
+        }
+        else
+        {
+            $order = order::all();
+            return view('admin.dashboard')
+            ->with([
+                'Orders' => $order,
+                'customers' => $Customer
+            ]);
+        }        
     }
 
     /**

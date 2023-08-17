@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menu;
-use App\Models\business;
+use App\Models\Business;
 
 class FoodmenuController extends Controller
 {
@@ -15,7 +15,7 @@ class FoodmenuController extends Controller
      */
     public function index()
     {
-        $business = business::pluck('name','id');
+        $business = Business::pluck('name','id');
 
         $Menus = Menu::all();
         return view('admin.foodmenu')->with('Menus',$Menus)->with('businesses', $business);
@@ -46,7 +46,7 @@ class FoodmenuController extends Controller
             $filename = str_replace(' ', '', $file_extension);
             $request->file('image')->move($destination_path, $filename);
 
-            $business = business::find($request->get('business_id'));
+            $business = Business::find($request->get('business_id'));
             $menu = new Menu();
             
             $menu->name = $request->get('menuname');
@@ -61,7 +61,7 @@ class FoodmenuController extends Controller
         //                $request->get('business_id') . '.' . $request->image->extension();
     
 
-        $business = business::pluck('name','id');
+        $business = Business::pluck('name','id');
         $Menus = Menu::all();
         return view('admin.foodmenu')->with('Menus',$Menus)->with('businesses', $business);   
     }

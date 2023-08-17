@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\business;
+use App\Models\Business;
 use App\Models\location;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class FoodStoreController extends Controller
     public function index()
     {
         
-        $businesses = business::all();
+        $businesses = Business::all();
         $locate = location::all()->toarray();
         return view('foodstorefrontend')->with('businesses',$businesses)->with('location', $locate);
     }
@@ -47,12 +47,12 @@ class FoodStoreController extends Controller
 
         if (strpos($request->path(), 'api/') === 0) {
             return BusinessResource::collection(
-                business::all());
+                Business::all());
         }
         else
         {              
             //$resturants = business::all()->where('category',$request->get('category'));
-            $businesses = business::all();
+            $businesses = Business::all();
             //$businesses = business::paginate(30)->where('category','DessertShops');
             //$businesses = business::paginate(30);
     

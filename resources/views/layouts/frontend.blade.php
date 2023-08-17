@@ -35,12 +35,18 @@
                 <!--<li class="nav-item"><a class="nav-link me-lg-3" href="#resturant">Resturants</a></li>
                 <li class="nav-item"><a class="nav-link me-lg-3" href="#foodtruck">Food Trucks</a></li>-->
             </ul>
+
+            <a href="{{ route('/Userlogin') }}" class=" rounded-pill  px-3 mb-2 mb-lg-0 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Login
+            </a>
+
             <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
                             <i class="bi-chat-text-fill me-2"></i>
                             <span class="small">Send Feedback</span>
                         </span>
             </button>
+            
         </div>
     </div>
 </nav>

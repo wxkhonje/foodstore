@@ -17,8 +17,17 @@ class EmailController extends Controller
      */
     public function index()
     {
-        Mail::to('xavier.khonje@gmail.com')->send(new welcomemail());
-        return new welcomemail();
+        //Mail::to('xavier.khonje@gmail.com')->send(new welcomemail());
+        //return new welcomemail();
+        $data = [
+            'name' => 'John Doe',
+            'email' => 'johndoe@example.com',
+            'message' => 'Hello, how are you?'
+        ];
+
+        //$email = new welcomemail("Testing using Dynamic Messages from Email Controller");
+        Mail::to('info@goldengalorecompetitions.co.uk')->send(new welcomemail($data));
+        //return new welcomemail($email);
     }
 
     /**
@@ -39,7 +48,13 @@ class EmailController extends Controller
      */
     public function store(StoreemailRequest $request)
     {
-        //
+
+        $Message = $request->Message;
+
+        $email = new welcomemail($Message);
+        Mail::to('xavier.khonje@gmail.com')->send(new welcomemail($email));
+        return new welcomemail();
+
     }
 
     /**

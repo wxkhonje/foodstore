@@ -16,4 +16,9 @@ class order extends Model
         'customerid',
         'cost'
     ];
+
+    public function cart()
+    {
+        return $this->hasMany(cart::class);
+    }    
 }

@@ -21,6 +21,7 @@ class BusinessResource extends JsonResource
                 'description'=>$this->description,
                 'image_path'=>$this->image_path,
                 'category'=>$this->category,
+                'category_id'=>$this->category_id,
                 'contactperson'=>$this->contactperson,
                 'email'=>$this->email,
                 'cellnumber'=>$this->cellnumber

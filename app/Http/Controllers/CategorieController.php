@@ -25,7 +25,7 @@ class CategorieController extends Controller
         else
         {              
             $categories = categorie::all();
-            return view('productcategories')->with('categories',$categories);
+            return view('admin.businesscategory')->with('categories',$categories);
         }
     }
 
@@ -51,7 +51,10 @@ class CategorieController extends Controller
 
             $request->validated($request->all());
 
-            categorie::create(['name'=>$request->name]);            
+            categorie::create([
+                'name'=>$request->name,
+                'description'=>$request->description
+            ]);           
 
             return categoryResource::collection(
                 $categories = categorie::all()
@@ -60,11 +63,14 @@ class CategorieController extends Controller
         else
         {              
             $request->validated($request->all());
-
-            categorie::create(['name'=>$request->name]);            
+            
+            categorie::create([
+                'name'=>$request->name,
+                'description'=>$request->description
+            ]);              
 
             $categories = categorie::all();
-            return view('productcategories')->with('categories',$categories);
+            return view('admin.businesscategory')->with('categories',$categories);
         }
     }
 
@@ -119,7 +125,7 @@ class CategorieController extends Controller
             $categorie->save();           
 
             $categories = categorie::all();
-            return view('productcategories')->with('categories',$categories);
+            return view('admin.businesscategory')->with('categories',$categories);
         }
 
 

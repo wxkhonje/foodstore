@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('menus', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->integer('business_id')->unsigned();
             $table->string('name');
             $table->text('description');

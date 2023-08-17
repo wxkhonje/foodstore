@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
+            $table->unsignedBigInteger('category_id')->default(0);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');              
             $table->String('name');
             $table->string('description');
             $table->string('image_path');

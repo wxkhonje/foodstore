@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('middlename')->nullable();
             $table->string('lastname');
-            $table->integer('cellnumber');
-            $table->integer('telephonenumber')->nullable();
+            $table->string('cellnumber');
+            $table->string('telephonenumber')->nullable();
             $table->string('emailaddress');
             $table->string('physicaladdress');
             $table->string('contactaddress')->nullable();
-            $table->integer('longitude');
-            $table->integer('latitude');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->text('deliveryaddress');
             $table->text('notes')->nullable();
             $table->timestamps();

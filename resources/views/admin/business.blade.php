@@ -7,81 +7,49 @@
 
         <div>
             {!! Form::open(['method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
-            <div class="row">
-                <div class="form-group col-sm">
-                    {!! Form::label('name', 'Name') !!}
-                    {!! Form::text('name'); !!}
+            <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                <div class="md:col-span-1">
+                    {{ Form::label('name', 'Name', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) }}
+                    {{ Form::text('name', '', ['class' => 'block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6', 'placeholder' => 'Enter Business name']) }}
                 </div>
-                <div class="form-group col-sm">
-                    {!! Form::label('category', 'Category', ['class'=>'control']); !!}
-                    {!! Form::select('category', [
-                                                    'Foodtruck' => 'Foodtruck',
-                                                    'TakeAway' => 'TakeAway',
-                                                    'Resturant'=>'Resturant',
-                                                    'Cafes'=>'Cafes',
-                                                    'Bakeries'=>'Bakeries',
-                                                    'SweetShops'=>'SweetShops',
-                                                    'BeverageShops'=>'BeverageShops',
-                                                    'Bars'=>'Bars',
-                                                    'IceCreamShops'=>'IceCreamShops',
-                                                    'StreetFoods'=>'StreetFoods',
-                                                    'DessertShops'=>'DessertShops'
-                                                 ], 'Resturant'); !!}
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="form-group col-sm">
-                    {!! Form::label('contactperson', 'Contact Person') !!}
-                    {!! Form::text('contactperson'); !!}
+                <div class="form-group md:col-span-1">
+                    {!! Form::label('category', 'Category', ['class'=>'font-bold']); !!}
+                    {!! Form::select('category', $categoryoptions, 'null', 
+                                                 ['class'=>'block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6']); !!}
                 </div>
-                <div class="form-group col-sm">
+
+                <div class="form-group md:col-span-1">
+                    {!! Form::label('contactperson', 'Contact Person', ['class' => 'block text-gray-700 text-sm font-bold mb-2']) !!}
+                    {!! Form::text('contactperson', '', ['class'=>'block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6', 'placeholder' => 'Enter Contact name']); !!}
+                </div>
+                <div class="form-group md:col-span-1">
                     {!! Form::label('description', 'Description') !!}
-                    {!! Form::text('description'); !!}
+                    {!! Form::text('description','', ['class'=>'block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6', 'placeholder' => 'Enter Contact name']); !!}
                 </div>                
-                <div class="form-group col-sm">
+                <div class="form-group md:col-span-1">
                     {!! Form::label('email', 'Email') !!}
-                    {!! Form::text('email'); !!}
+                    {!! Form::text('email','', ['class'=>'block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6', 'placeholder' => 'Enter Contact name']); !!}
                 </div>
-                <div class="form-group col-sm">
+                <div class="form-group md:col-span-1">
                     {!! Form::label('cellnumber', 'Cellnumber') !!}
-                    {!! Form::text('cellnumber'); !!}
-                </div>
-                <div class="form-group col-sm">
-                    {!! Form::label('PhysicalAddress', 'Physical Address') !!}
-                    {!! Form::text('PhysicalAddress'); !!}
-                </div>               
-                <div class="form-group col-sm">
-                    {!! Form::label('longitude', 'Longitude') !!}
-                    {!! Form::text('longitude'); !!}
-                </div>
-                <div class="form-group col-sm">
-                    {!! Form::label('latitude', 'Latitude') !!}
-                    {!! Form::text('latitude'); !!}
-                </div>                      
-                <div class="form-group col-sm">
+                    {!! Form::text('cellnumber', '', ['class'=>'block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6', 'placeholder' => 'Enter Contact name']); !!}
+                </div>                                  
+                <div class="form-group md:col-span-1">
                     {!! Form::label('location', 'Location') !!}
                     {!! Form::select('location',[
                                                 'Blantyre'=>'Blantyre',
                                                 'Lilongwe'=>'Lilongwe',
                                                 'Mzuzu'=>'Mzuzu',
                                                 'Zomba'=>'Zomba'
-                                                ], 'Blantyre'); !!}
-                </div>                   
-                <div class="form-group col-sm">
-                    {!! Form::label('facebookhandle', 'Facebook Handle') !!}
-                    {!! Form::text('facebookhandle'); !!}
-                </div>                             
-                <div class="form-group col-sm">
-                    {!! Form::label('instagramhandle', 'Instagram Handle') !!}
-                    {!! Form::text('instagramhandle'); !!}
-                </div>                     
-                <div class="form-group col-sm">
+                                                ], 'Blantyre', ['class'=>'block w-full px-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6', 'placeholder' => 'Enter Contact name']); !!}
+                </div>        
+                <div class="form-group md:col-span-1">
                     {!! Form::label('image', 'Business Image') !!}
                     {!! Form::file('image'); !!}
                 </div>                       
-                <div class="col-sm">
-                    {!! Form::submit('Save') !!}
+                <div class="md:col-span-1">
+                    {!! Form::submit('Save', ['class'=>'block w-full px-2 rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-emerald-500']) !!}
                 </div>
             </div>
             {!! Form::close() !!}
@@ -116,7 +84,7 @@
                         <tbody>
                             @foreach($business as $biz)
                                 <tr>
-                                <td>{{$biz->name}}</td>
+                                <td><span class="text-green-600 font-bold">{{$biz->name}}</span></td>
                                 <td>{{$biz->category}}</td>
                                 <td>{{$biz->contactperson}}</td>
                                 <td>{{$biz->email}}</td>

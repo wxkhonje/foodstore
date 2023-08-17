@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use App\Http\Requests\StoreGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
+use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
@@ -13,9 +14,18 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.galleryassets.gallery');
+
+        if (strpos($request->path(), 'api/') === 0) {
+            return GalleryResource::collection(
+                Gallery::all());
+        }
+        else
+        {              
+            $images = Gallery::get();
+            return view('admin.galleryassets.gallery',compact('images'));
+        }
     }
 
     /**
@@ -36,7 +46,32 @@ class GalleryController extends Controller
      */
     public function store(StoreGalleryRequest $request)
     {
-        //
+    	$this->validate($request, [
+    		'title' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        return response()->json($request);
+       //return dd($request);
+        if ($request->hasFile('file')) {
+        
+            $input['image'] = time().'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images'), $input['image']);
+    
+            $ImageURL = 'images'.'/'.$input['image'];
+    
+            $input['title'] = $request->title;
+            $input['url'] = $ImageURL;
+            $input['description'] = $request->description;
+            $input['notes'] = $request->notes;
+            gallery::create($input);
+        }
+        else
+        {
+            return response()->json(['success' => false]);
+        }
+
+    	return back()
+    		->with('success','Image Uploaded successfully.');
     }
 
     /**

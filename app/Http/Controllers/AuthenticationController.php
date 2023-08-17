@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Authentication;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Requests\StoreAuthenticationRequest;
 use App\Http\Requests\UpdateAuthenticationRequest;
+use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
 {
@@ -13,9 +15,10 @@ class AuthenticationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // Perform any necessary validation or additional logic 
+
     }
 
     /**
@@ -36,7 +39,7 @@ class AuthenticationController extends Controller
      */
     public function store(StoreAuthenticationRequest $request)
     {
-        //
+        return app(LoginController::class)->login($request);
     }
 
     /**

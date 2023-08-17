@@ -63,16 +63,7 @@
                                             <div class="col-md-8 offset-md-4">
                                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                                     {{ __('Login') }}
-                                                </button>
-
-                                                <button type="submit" class="btn btn-google btn-user btn-block">
-                                                <i class="fab fa-google fa-fw"></i>{{ __('Login with Google') }}
-                                                </button>
-                                                
-                                                <button type="submit" class="btn btn-facebook btn-user btn-block">
-                                                <i class="fab fa-facebook-f fa-fw"></i> {{ __('Login with Facebook') }}
-                                                    
-                                                </button>                                                
+                                                </button>                                               
                                             </div>
                                             <div><br /></div>
                                             <hr>
